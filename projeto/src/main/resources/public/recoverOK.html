@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulário de Redefinição de Senha</title>
+</head>
+<body>
+    <h2>Redefinição de Senha</h2>
+    
+    <form id="resetPasswordForm">
+        <label for="password">Nova Senha:</label>
+        <input type="password" id="password" name="password" required><br>
+        
+        <label for="confirmation_password">Confirmação de Senha:</label>
+        <input type="password" id="confirmation_password" name="confirmation_password" required><br>
+        
+        <button type="submit">Redefinir Senha</button>
+    </form>
+    
+    <h2>Resposta do Servidor:</h2>
+    <pre id="response"></pre>
+    
+    <script>
+        // Extrai o token da URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const token = urlParams.get('token');
+
+        document.getElementById("resetPasswordForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const password = document.getElementById("password").value;
+            const confirmation_password = document.getElementById("confirmation_password").value;
+            
+            const data = {
+                password: password,
+                confirmation_password: confirmation_password
+            };
+
+            if (!token) {
+                alert("Token não encontrado na URL.");
+                return;
+            }
+            
+            fetch("https://b13-investimentos.herokuapp.com/resetPassword", {
+                method: "POST",
+                headers: {
+                    "Authorization": "Bearer " + token,
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("response").textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById("response").textContent = "Erro: " + error.message;
+            });
+        });
+    </script>
+</body>
+</html>

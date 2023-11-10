@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Recuperar Senha</title>
+	<link rel="stylesheet" href="/public/css/recover.css" />
+</head>
+
+<body>
+	<div class="page">
+		<form method="POST" class="formLogin" id="resetPasswordForm">
+			<img src="/public/images/LogoB13.png" alt="B13 Investimentos" />
+
+			<p>Digite sua nova senha nos campos abaixo.</p>
+			
+			<input id="novaSenha" type="password" placeholder="Nova senha" autofocus="true" />
+
+			<input id="confirmacaoSenha" type="password" placeholder="Confirmação da nova senha" />
+			<p><span>A senha requer no mínimo 8 caracteres e conter número,
+					símbolo, letra maiúscula e minúscula.</span></p>
+			
+			<input type="submit" value="RECUPERAR" class="btn" id="submitBtn" /> <!-- Alterei o ID para 'submitBtn' -->
+			<br>
+			<div class="messageDiv"></div>
+		</form>
+	</div>
+	<script src="/public/js/recover.js"></script>
+</body>
+
+</html>

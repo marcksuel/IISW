@@ -1,0 +1,195 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600&display=swap");
+
+* {
+	font-family: "Montserrat", sans-serif;
+}
+
+body {
+	font-family: "Montserrat", sans-serif;
+	margin: 0;
+	padding: 0;
+	color: #023047 !important;
+	background-color: rgb(162, 162, 162) !important;
+}
+
+p {
+	text-align: center;
+	font-size: 8px;
+}
+
+p span {
+	display: block;
+	text-align: center;
+	font-size: 10px;
+	min-width: 280px;
+	/* Largura mínima desejada */
+	max-width: 280px;
+	/* Largura máxima desejada */
+	margin-bottom: 0px;
+}
+
+.page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	align-content: center;
+	justify-content: center;
+	width: 100%;
+	height: 100vh;
+	background-color: rgb(202, 202, 202) !important;
+	border-radius: 0 0 7px 7px;
+	/* Arredonda somente a borda inferior */
+	
+
+
+}
+
+.formLogin {
+	display: flex;
+	flex-direction: column;
+	background-color: #f2f2f2 !important;
+	border-radius: 7px;
+	padding: 40px;
+	box-shadow: 4px 8px 15px rgba(0, 0, 0, 0.4) !important;
+	gap: 5px;
+	position: relative;
+	/* Adicione esta propriedade */
+
+}
+
+.areaLogin img {
+	width: 420px;
+}
+
+.formLogin h1 {
+	padding: 0;
+	margin: 0;
+	font-weight: 500;
+	font-size: 2.3em;
+}
+
+.formLogin p {
+	display: inline-block;
+	font-size: 14px;
+	color: #666;
+	margin-bottom: 25px;
+}
+
+.formLogin input {
+	padding: 15px;
+	font-size: 14px;
+	border: 1px solid #ccc !important;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	border-radius: 4px;
+	transition: all linear 160ms;
+	outline: none;
+}
+#confirmacaoSenha {
+  margin-bottom: 0 !important; /* Ajuste o valor conforme necessário */
+}
+.formLogin input:focus {
+	border: 1px solid #f6c832 !important;
+}
+
+.formLogin label {
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.formLogin img {
+	display: block;
+	margin: 0 auto;
+	height: 120px;
+	width: 100px;
+}
+
+.formLogin a {
+	display: inline-block;
+	margin-bottom: 20px;
+	font-size: 13px;
+	color: #555;
+	transition: all linear 160ms;
+}
+
+.formLogin a:hover {
+	color: #f6c832 !important;
+}
+
+.btn {
+	margin-top: 20px;
+    background-color: #f6c832 !important;
+    color: #40360d;
+    font-size: 14px;
+    border: none !important;
+    transition: all linear 160ms;
+    cursor: pointer;
+    margin: 0 !important;
+}
+
+/* Estilo para botão desativado */
+.btn:disabled {
+		margin-top: 20px;
+
+    background-color: gray !important; /* Define a cor de fundo para desativado */
+    color: #ccc; /* Define a cor do texto para desativado */
+    cursor: not-allowed; /* Define o cursor para "não permitido" */
+}
+
+/* Estilo para botão quando o mouse passa por cima */
+.btn:hover {
+    transform: scale(1.05);
+    background-color: #f6c832 !important;
+}
+
+/* Estilo para botão quando o mouse passa por cima (desativado) */
+.btn:disabled:hover {
+    /* Estilos do hover para o botão desativado (nenhum estilo) */
+    background-color: gray !important;
+    color: #ccc;
+    cursor: not-allowed;
+}
+
+.messageDiv {
+	position: absolute;
+	bottom: 0;
+	left: 20px;
+	/* Adicione espaço à esquerda para garantir que a borda não ultrapasse os limites da form */
+	z-index: 999;
+	display: none;
+	padding: 10px;
+	box-sizing: border-box;
+	border-radius: 0 0 7px 7px;
+	/* Arredonde apenas a borda inferior */
+}
+
+.messageDiv.success {
+	background-color: #4CAF50;
+	/* Verde */
+	color: #fff;
+	/* Letras brancas */
+}
+
+.messageDiv.error {
+	background-color: #f44336;
+	/* Vermelho */
+	color: #fff;
+	/* Letras brancas */
+}
+
+/* Para animação de fade-in/out */
+@keyframes fade {
+	from {
+		opacity: 0;
+	}
+
+	to {
+		opacity: 1;
+	}
+}
+
+.message.success,
+.message.error {
+	animation: fade 2s;
+	animation-fill-mode: forwards;
+}

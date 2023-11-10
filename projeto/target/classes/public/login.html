@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formulário de Login</title>
+</head>
+<body>
+    <h2>Formulário de Login</h2>
+    
+    <form id="loginForm">
+        <label for="username">Usuário:</label>
+        <input type="text" id="username" name="username" required><br>
+        
+        <label for="password">Senha:</label>
+        <input type="password" id="password" name="password" required><br>
+        
+        <button type="submit">Enviar</button>
+    </form>
+    
+    <h2>Resposta do Servidor:</h2>
+    <pre id="response"></pre>
+    
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            
+            const data = {
+                username: username,
+                password: password
+            };
+            
+            fetch("https://b13-investimentos.herokuapp.com/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById("response").textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById("response").textContent = "Erro: " + error.message;
+            });
+        });
+    </script>
+</body>
+</html>

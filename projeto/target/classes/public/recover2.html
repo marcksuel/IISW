@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Recuperar Senha</title>
+    <link rel="stylesheet" href="/public/css/style.css" />
+  </head>
+  <body>
+    <div class="page">
+      <form method="POST" class="formLogin" id="resetPasswordForm">
+        <img src="/public/images/LogoB13.png" alt="B13 Investimentos" />
+
+        <p>Digite sua nova senha nos campos abaixo.</p>
+
+        <input
+          id="novaSenha"
+          type="password"
+          placeholder="Nova senha"
+          autofocus="true"
+        />
+
+        <input
+          style="margin-bottom: 20px"
+          type="password"
+          id="confirmacaoSenha"
+          placeholder="Confirmação da nova senha"
+        />
+
+        <input type="submit" value="RECUPERAR" class="btn" />
+
+        <input type="hidden" id="token" name="token" value="" />
+      </form>
+    </div>
+  </body>
+</html>
+
+<script>
+  const urlParams = new URLSearchParams(window.location.search);
+  const token = urlParams.get("token");
+
+  document
+    .getElementById("resetPasswordForm")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
+
+      // Obtendo dados do formulário
+      const password = document.getElementById("novaSenha").value;
+      const confirmation_password =
+        document.getElementById("confirmacaoSenha").value;
+
+      // Construindo dados para enviar ao servidor
+      const formData = new FormData();
+      formData.append("password", password);
+      formData.append("confirmation_password", confirmation_password);
+
+      const data = {
+        password: password,
+        confirmation_password: confirmation_password,
+      };
+
+      fetch("https://b13-investimentos.herokuapp.com/resetPassword", {
+        method: "POST",
+        headers: {
+          Authorization: "Bearer " + token,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      })
+        .then((response) => {
+          console.log(response);
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    });
+</script>
